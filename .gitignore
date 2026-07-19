@@ -1,0 +1,16 @@
+cat > .gitignore <<'EOF'
+.env
+.env.*
+!.env.example
+
+*.secret
+*.key
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Neovim generated/local state
+stow/nvim/.config/nvim/.luarc.json
+stow/nvim/.config/nvim/lazy-lock.json.tmp
+EOF
