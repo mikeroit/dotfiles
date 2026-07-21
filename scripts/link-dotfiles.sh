@@ -13,7 +13,7 @@ fi
 
 cd "$STOW_DIR"
 
-for package in bash git nvim; do
+for package in bash hypr nvim; do
     if [[ -d "$package" ]]; then
         echo "Linking $package"
         stow --restow --target="$TARGET_DIR" "$package"

@@ -71,7 +71,7 @@ hl.bind(mod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + UP", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 
-h1.bind("SUPER + SHIFT + E", h1.dsp.exec_cmd("hyprshutdown"))
+hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("hyprshutdown"))
 
 for workspace = 1, 10 do
     local key = workspace % 10
