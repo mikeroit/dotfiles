@@ -49,4 +49,8 @@ __git_prompt_info() {
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;33m\]$(__git_prompt_info)\[\033[00m\]\$ '
 
-echo "Hello, world"
+# vim is not installed as a separate package — nvim is the only editor
+# in use here. This alias exists so muscle-memory `vim` still lands you
+# in the real config instead of silently falling through to whatever
+# stock vim happens to be on the system.
+alias vim="nvim"

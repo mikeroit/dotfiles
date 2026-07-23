@@ -1,0 +1,75 @@
+/* stow/waybar/.config/waybar/style-theme-contrast.css
+   High-contrast palette for bright/outdoor lighting, matching
+   kitty-theme-contrast.conf. Concatenated after style-base.css. */
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #808080;
+}
+
+#workspaces button.active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#workspaces button.urgent {
+    background-color: #ff3333;
+    color: #000000;
+}
+
+#window {
+    color: #ffffff;
+}
+
+#clock {
+    color: #5599ff;
+    font-weight: bold;
+}
+
+#custom-theme {
+    color: #ffffff;
+}
+
+#network {
+    color: #33ffff;
+}
+
+#network.disconnected {
+    color: #ff3333;
+}
+
+#pulseaudio {
+    color: #ffff33;
+}
+
+#pulseaudio.muted {
+    color: #808080;
+}
+
+#battery {
+    color: #33ff33;
+}
+
+#battery.warning {
+    color: #ffff33;
+}
+
+#battery.critical {
+    color: #ff3333;
+    animation: blink 1.5s steps(2) infinite;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0.4;
+    }
+}
+
+#tray {
+    color: #ffffff;
+}

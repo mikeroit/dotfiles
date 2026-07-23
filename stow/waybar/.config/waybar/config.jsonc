@@ -1,0 +1,84 @@
+// stow/waybar/.config/waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    // Waybar reads Hyprland state via its own IPC socket, not through
+    // hyprland.lua's config syntax — so the fact that Hyprland's config
+    // layer here is non-standard (Lua, not hyprland.conf) doesn't affect
+    // these modules at all.
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "pulseaudio", "battery", "custom/theme", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        // Only show workspaces that actually have windows, plus the active
+        // one — avoids a static row of 10 empty workspace buttons.
+        "persistent-workspaces": {}
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b  %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "network": {
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}",
+        "format-disconnected": "⚠ disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "婢 muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        // Left click toggles mute, scroll adjusts volume — matches the
+        // XF86Audio keys already bound in hyprland.lua, so there's no
+        // separate mental model for mouse vs. keyboard volume control.
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": " {capacity}%",
+        // Laptop-as-main-machine means battery is always relevant — this
+        // stays visible unconditionally rather than only showing on low charge.
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
+    },
+
+    "custom/theme": {
+    "exec": "cat $HOME/.dotfiles/theme-mode",
+    // "once" + "signal" means this never polls on a timer — it only
+    // re-runs when explicitly signaled below, so it's not wastefully
+    // re-reading a file every N seconds for something that changes
+    // maybe a few times a day.
+    "interval": "once",
+    "signal": 8,
+    "format": " {}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}

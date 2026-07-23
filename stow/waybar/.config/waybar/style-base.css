@@ -1,0 +1,42 @@
+/* stow/waybar/.config/waybar/style-base.css
+   Structural settings only. Colors live in style-theme-{soft,contrast}.css
+   and get concatenated onto this file by gen-theme.sh to produce the real
+   style.css that waybar actually reads. CSS cascade means order matters:
+   gen-theme.sh must put this file FIRST, theme file SECOND, so the theme's
+   color rules win over anything here (though nothing here sets color anyway). */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    padding: 0 6px;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    border-radius: 6px;
+}
+
+#custom-theme {
+    padding: 0 10px;
+}
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#window {
+    padding: 0 10px;
+}
+
+#tray {
+    margin-right: 4px;
+}

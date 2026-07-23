@@ -1,0 +1,119 @@
+/* stow/waybar/.config/waybar/style-base.css
+   Structural settings only. Colors live in style-theme-{soft,contrast}.css
+   and get concatenated onto this file by gen-theme.sh to produce the real
+   style.css that waybar actually reads. CSS cascade means order matters:
+   gen-theme.sh must put this file FIRST, theme file SECOND, so the theme's
+   color rules win over anything here (though nothing here sets color anyway). */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    padding: 0 6px;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    border-radius: 6px;
+}
+
+#custom-theme {
+    padding: 0 10px;
+}
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#window {
+    padding: 0 10px;
+}
+
+#tray {
+    margin-right: 4px;
+}
+/* stow/waybar/.config/waybar/style-theme-soft.css
+   Catppuccin Mocha — soft/low-contrast palette, matching kitty-theme-soft.conf.
+   Concatenated after style-base.css by gen-theme.sh. */
+
+window#waybar {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #6c7086;
+}
+
+#workspaces button.active {
+    background-color: #cba6f7;
+    color: #11111b;
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8;
+    color: #11111b;
+}
+
+#window {
+    color: #bac2de;
+}
+
+#clock {
+    color: #89b4fa;
+    font-weight: bold;
+}
+
+#custom-theme {
+    color: #b4befe;
+}
+
+#network {
+    color: #94e2d5;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#pulseaudio {
+    color: #f9e2af;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    /* Blink on critical battery — a color match alone is easy to miss
+       out of the corner of your eye; motion isn't. */
+    animation: blink 1.5s steps(2) infinite;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0.4;
+    }
+}
+
+#tray {
+    color: #cdd6f4;
+}
