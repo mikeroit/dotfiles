@@ -1,4 +1,18 @@
 -- Basic settings
+
+require("theme").load()
+
+-- Opens an RPC socket per nvim instance, one per process id, so
+-- gen-theme.sh can push a live theme reload into every running nvim —
+-- mirrors kitty's `allow_remote_control` + unix socket pattern, but nvim
+-- needs one socket *per open instance* rather than one shared socket,
+-- since unlike kitty (one process, many windows) each terminal tab/pane
+-- is typically its own separate nvim process.
+local nvim_socket = "/tmp/nvim-socket-" .. vim.fn.getpid()
+if vim.fn.filereadable(nvim_socket) == 0 then
+  vim.fn.serverstart(nvim_socket)
+end
+
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n", "v", "o" }, ";", ":", { noremap = true })
@@ -140,20 +154,5 @@ require("lazy").setup({
   {
     "lewis6991/gitsigns.nvim",
     opts = {},
-  },
-    -- colorscheme
-  {
-  "folke/tokyonight.nvim",
-  priority = 1000,
-  lazy = false,
-  config = function()
-      require("tokyonight").setup({
-          style = "storm",      -- storm, night, moon, day
-          transparent = false,
-          terminal_colors = true,
-      })
-
-      vim.cmd.colorscheme("tokyonight")
-  end,
   },
 })

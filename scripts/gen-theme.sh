@@ -67,9 +67,21 @@ gen_wallpaper() {
     fi
 }
 
+gen_nvim() {
+    # Push a live reload into every currently-open nvim instance. Sockets
+    # that no longer exist (nvim closed without cleanup, e.g. a crash)
+    # are skipped rather than erroring the whole loop.
+    shopt -s nullglob
+    for sock in /tmp/nvim-socket-*; do
+        nvim --server "$sock" --remote-expr 'v:lua.require("theme").load()' >/dev/null 2>&1 || true
+    done
+    shopt -u nullglob
+}
+
 gen_kitty
 gen_waybar
 gen_rofi
+gen_nvim
 gen_wallpaper
 
 echo "Theme set to: $mode"
