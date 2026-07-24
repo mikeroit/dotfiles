@@ -78,6 +78,7 @@ hl.bind(mod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("hyprshutdown"))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.exit())
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/gen-theme.sh toggle"))
+hl.bind(mod .. " + P", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/pass-rofi.sh"))
 
 for workspace = 1, 10 do
     local key = workspace % 10
