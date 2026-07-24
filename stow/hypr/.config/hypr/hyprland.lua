@@ -72,15 +72,80 @@ hl.bind(mod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/cliphist-picker.sh"))
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("rofi -show window"))
 
-hl.bind(mod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
-hl.bind(mod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
-hl.bind(mod .. " + UP", hl.dsp.focus({ direction = "up" }))
-hl.bind(mod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
-
 hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + J", hl.dsp.focus({ direction = "down" }))
+
+-- Resize tiled window (against shared border with neighbor)
+hl.bind(mod .. " + LEFT", function()
+    local w = hl.get_active_window()
+    if w == nil then return end
+    local s = w.size
+    hl.dispatch(hl.dsp.window.resize({ x = s.x - 20, y = s.y }))
+end, { repeating = true })
+
+hl.bind(mod .. " + RIGHT", function()
+    local w = hl.get_active_window()
+    if w == nil then return end
+    local s = w.size
+    hl.dispatch(hl.dsp.window.resize({ x = s.x + 20, y = s.y }))
+end, { repeating = true })
+
+hl.bind(mod .. " + UP", function()
+    local w = hl.get_active_window()
+    if w == nil then return end
+    local s = w.size
+    hl.dispatch(hl.dsp.window.resize({ x = s.x, y = s.y - 20 }))
+end, { repeating = true })
+
+-- DOWN unchanged, as before
+hl.bind(mod .. " + DOWN", function()
+    local w = hl.get_active_window()
+    if w == nil then return end
+    local s = w.size
+    hl.dispatch(hl.dsp.window.resize({ x = s.x, y = s.y + 20 }))
+end, { repeating = true })
+
+hl.bind(mod .. " + SHIFT + UP", function()
+    local w = hl.get_active_window()
+    if w == nil or not w.floating then return end
+    hl.dispatch(hl.dsp.window.fullscreen())
+end)
+
+hl.bind(mod .. " + SHIFT + LEFT", function()
+    local w = hl.get_active_window()
+    if w == nil or not w.floating then return end
+    local m = w.monitor
+    local margin = 5
+    local avail_w = m.width - m.reserved.left - m.reserved.right
+    local avail_h = m.height - m.reserved.top - m.reserved.bottom
+    hl.dispatch(hl.dsp.window.move({
+        x = m.x + m.reserved.left + margin,
+        y = m.y + m.reserved.top + margin,
+    }))
+    hl.dispatch(hl.dsp.window.resize({
+        x = (avail_w / 2) - (margin * 2),
+        y = avail_h - (margin * 2),
+    }))
+end)
+
+hl.bind(mod .. " + SHIFT + RIGHT", function()
+    local w = hl.get_active_window()
+    if w == nil or not w.floating then return end
+    local m = w.monitor
+    local margin = 5
+    local avail_w = m.width - m.reserved.left - m.reserved.right
+    local avail_h = m.height - m.reserved.top - m.reserved.bottom
+    hl.dispatch(hl.dsp.window.move({
+        x = m.x + m.reserved.left + (avail_w / 2) + margin,
+        y = m.y + m.reserved.top + margin,
+    }))
+    hl.dispatch(hl.dsp.window.resize({
+        x = (avail_w / 2) - (margin * 2),
+        y = avail_h - (margin * 2),
+    }))
+end)
 
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("hyprshutdown"))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.exit())
