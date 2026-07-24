@@ -54,3 +54,21 @@ PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;33m\]$(__git_pr
 # in the real config instead of silently falling through to whatever
 # stock vim happens to be on the system.
 alias vim="nvim"
+
+# --- Color support: ls family + grep ---
+# Uses standard ANSI SGR codes only (no hardcoded hex), so these follow
+# whichever kitty theme (soft/contrast) is currently active automatically —
+# no separate per-theme color files needed here, unlike kitty/waybar/rofi/nvim.
+
+# GNU ls's built-in default LS_COLORS is already theme-aware in this sense,
+# so we don't need to hand-roll one — just turn coloring on.
+alias ls='ls --color=auto'
+alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+# grep family — same reasoning, no custom GREP_COLORS needed unless you
+# want to tune match-highlight color/weight later.
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
