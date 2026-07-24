@@ -66,7 +66,7 @@ hl.bind(mod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd(launcher))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(file_manager))
 
-hl.bind(mod .. " + Q", hl.dsp.window.close())
+hl.bind(mod .. " + BACKSPACE", hl.dsp.window.close())
 hl.bind(mod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/cliphist-picker.sh"))
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("rofi -show window"))
