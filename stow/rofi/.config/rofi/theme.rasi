@@ -1,0 +1,137 @@
+// stow/rofi/.config/rofi/theme-base.rasi
+// Structural settings only. Colors live in theme-soft.rasi / theme-contrast.rasi
+// and get concatenated onto this file by gen-theme.sh to produce theme.rasi,
+// which config-base.rasi references via @theme.
+
+window {
+    width:                        600px;
+    height:                       400px;
+    location:                     center;
+    border:                       2px;
+    border-radius:                8px;
+    padding:                      10px;
+}
+
+mainbox {
+    children:                     [ "inputbar", "listview" ];
+    spacing:                      10px;
+}
+
+inputbar {
+    children:                     [ "prompt", "entry" ];
+    padding:                      8px;
+    border-radius:                6px;
+    border:                       0px;
+}
+
+prompt {
+    padding:                      0 8px 0 0;
+}
+
+prompt {
+    padding:                      0 8px 0 0;
+    border:                       0px;
+}
+
+entry {
+    placeholder:                  "Search...";
+}
+
+listview {
+    lines:                        8;
+    scrollbar:                    false;
+    padding:                      4px 0;
+}
+
+element {
+    padding:                      6px 8px;
+    border-radius:                6px;
+}
+
+element-icon {
+    size:                         24px;
+}
+
+entry {
+    border:                       0px;
+}
+// stow/rofi/.config/rofi/theme-soft.rasi
+// Catppuccin Mocha — soft/low-contrast palette, matching kitty-theme-soft.conf
+// and style-theme-soft.css. Concatenated onto theme-base.rasi by gen-theme.sh.
+
+* {
+    background:                   #1e1e2eff;
+    background-alt:               #313244ff;
+    foreground:                   #cdd6f4ff;
+    selected:                     #cba6f7ff;
+    active:                       #a6e3a1ff;
+    urgent:                       #f38ba8ff;
+}
+
+window {
+    background-color:             @background;
+    border-color:                 @selected;
+}
+
+inputbar {
+    background-color:             @background-alt;
+    text-color:                   @foreground;
+}
+
+prompt {
+    text-color:                   @selected;
+    background-color:             @background-alt;
+}
+
+entry {
+    text-color:                   @foreground;
+    placeholder-color:            #6c7086ff;
+    background-color:             @background-alt;
+}
+
+listview {
+    background-color:             @background;
+}
+
+element normal.normal {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element selected.normal {
+    background-color:             @selected;
+    text-color:                   #11111bff;
+}
+
+element alternate.normal {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element-icon {
+    background-color:             transparent;
+}
+
+element-text {
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+mainbox {
+    background-color:             @background;
+}
+
+element normal.active {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element alternate.active {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element selected.active {
+    background-color:             @selected;
+    text-color:                   #11111bff;
+}

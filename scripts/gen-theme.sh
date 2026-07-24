@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+echo "$(date '+%H:%M:%S.%N') - triggered" >> /tmp/theme-timing.log
+
 set -Eeuo pipefail
 
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -29,11 +31,8 @@ gen_kitty() {
     local dir="$REPO_DIR/stow/kitty/.config/kitty"
     cat "$dir/kitty-base.conf" "$dir/kitty-theme-$mode.conf" > "$dir/kitty.conf"
 
-    # Push the new theme into any already-running kitty windows without
-    # restarting them. Requires allow_remote_control + listen_on to be set
-    # in kitty-base.conf — we'll add those when we write that file.
     if command -v kitty >/dev/null 2>&1; then
-        kitty @ set-colors --all --configured "$dir/kitty-theme-$mode.conf" 2>/dev/null || true
+        ( kitty @ set-colors --all --configured "$dir/kitty-theme-$mode.conf" 2>/dev/null & )
     fi
 }
 
@@ -53,7 +52,13 @@ gen_waybar() {
     fi
 }
 
+gen_rofi() {
+    local dir="$REPO_DIR/stow/rofi/.config/rofi"
+    cat "$dir/theme-base.rasi" "$dir/theme-$mode.rasi" > "$dir/theme.rasi"
+}
+
 gen_kitty
 gen_waybar
+gen_rofi
 
 echo "Theme set to: $mode"

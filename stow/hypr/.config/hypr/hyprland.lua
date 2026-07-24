@@ -1,6 +1,6 @@
 local terminal = "kitty"
 local file_manager = "thunar"
-local launcher = "wofi --show drun"
+local launcher = "rofi -show drun"
 
 -- Use the preferred mode for any connected monitor.
 hl.monitor({
@@ -55,6 +55,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("mako")
+    hl.exec_cmd("wl-paste --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image/png --watch cliphist store")
 end)
 
 local mod = "SUPER"
@@ -64,7 +66,9 @@ hl.bind(mod .. " + D", hl.dsp.exec_cmd(launcher))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(file_manager))
 
 hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mod .. " + V", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/cliphist-picker.sh"))
+hl.bind("ALT + TAB", hl.dsp.exec_cmd("rofi -show window"))
 
 hl.bind(mod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
 hl.bind(mod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))

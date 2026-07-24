@@ -1,0 +1,57 @@
+// stow/rofi/.config/rofi/theme-base.rasi
+// Structural settings only. Colors live in theme-soft.rasi / theme-contrast.rasi
+// and get concatenated onto this file by gen-theme.sh to produce theme.rasi,
+// which config-base.rasi references via @theme.
+
+window {
+    width:                        600px;
+    height:                       400px;
+    location:                     center;
+    border:                       2px;
+    border-radius:                8px;
+    padding:                      10px;
+}
+
+mainbox {
+    children:                     [ "inputbar", "listview" ];
+    spacing:                      10px;
+}
+
+inputbar {
+    children:                     [ "prompt", "entry" ];
+    padding:                      8px;
+    border-radius:                6px;
+    border:                       0px;
+}
+
+prompt {
+    padding:                      0 8px 0 0;
+}
+
+prompt {
+    padding:                      0 8px 0 0;
+    border:                       0px;
+}
+
+entry {
+    placeholder:                  "Search...";
+}
+
+listview {
+    lines:                        8;
+    scrollbar:                    false;
+    padding:                      4px 0;
+}
+
+element {
+    padding:                      6px 8px;
+    border-radius:                6px;
+}
+
+element-icon {
+    size:                         24px;
+}
+
+entry {
+    border:                       0px;
+}

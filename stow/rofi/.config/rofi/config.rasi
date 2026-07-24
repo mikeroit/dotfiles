@@ -1,0 +1,29 @@
+// stow/rofi/.config/rofi/config-base.rasi
+
+@theme "theme"
+
+configuration {
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    icon-theme:                 "Adwaita";
+    // Matches the launch behavior wofi had (drun = desktop apps).
+    // "run" and "window" are added extras rofi supports natively that
+    // wofi didn't have a built-in mode for — run lets you launch an
+    // arbitrary shell command by name, window lets you fuzzy-switch
+    // between open windows without touching the mouse.
+    display-drun:               "Apps";
+    display-run:                "Run";
+    display-window:             "Windows";
+
+    font:                       "JetBrainsMono Nerd Font 12";
+
+    // Case-insensitive, substring matching — same behavior wofi had.
+    case-sensitive:              false;
+    matching:                    "fuzzy";
+
+    // Disable rofi's own history-based sorting so results order stays
+    // predictable (alphabetical/native order) rather than shuffling
+    // based on how often you've picked something before.
+    sorting-method:              "fzf";
+    disable-history:             true;
+}

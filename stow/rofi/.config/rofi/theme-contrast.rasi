@@ -1,0 +1,81 @@
+// stow/rofi/.config/rofi/theme-contrast.rasi
+// High-contrast palette for bright/outdoor lighting, matching
+// kitty-theme-contrast.conf and style-theme-contrast.css.
+// Concatenated onto theme-base.rasi by gen-theme.sh.
+
+* {
+    background:                   #000000ff;
+    background-alt:               #202020ff;
+    foreground:                   #ffffffff;
+    selected:                     #ffffffff;
+    active:                       #33ff33ff;
+    urgent:                       #ff3333ff;
+}
+
+window {
+    background-color:             @background;
+    border-color:                 @foreground;
+}
+
+inputbar {
+    background-color:             @background-alt;
+    text-color:                   @foreground;
+}
+
+prompt {
+    text-color:                   #5599ffff;
+    background-color:             @background-alt;
+}
+
+entry {
+    text-color:                   @foreground;
+    placeholder-color:            #808080ff;
+    background-color:             @background-alt;
+}
+
+listview {
+    background-color:             @background;
+}
+
+element normal.normal {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element selected.normal {
+    background-color:             @selected;
+    text-color:                   #000000ff;
+}
+
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element-icon {
+    background-color: transparent; 
+}
+
+element-text {
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+mainbox {
+    background-color:             @background;
+}
+
+element normal.active {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element alternate.active {
+    background-color:             @background;
+    text-color:                   @foreground;
+}
+
+element selected.active {
+    background-color:             @selected;
+    text-color:                   #000000ff;
+}
