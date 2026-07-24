@@ -65,6 +65,7 @@ local mod = "SUPER"
 hl.bind(mod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd(launcher))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(file_manager))
+hl.bind(mod .. " + BACKSLASH", hl.dsp.exec_cmd("google-chrome-stable"))
 
 hl.bind(mod .. " + BACKSPACE", hl.dsp.window.close())
 hl.bind(mod .. " + F", hl.dsp.window.float({ action = "toggle" }))
