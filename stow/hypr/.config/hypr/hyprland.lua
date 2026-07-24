@@ -77,6 +77,11 @@ hl.bind(mod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
 hl.bind(mod .. " + UP", hl.dsp.focus({ direction = "up" }))
 hl.bind(mod .. " + DOWN", hl.dsp.focus({ direction = "down" }))
 
+hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mod .. " + J", hl.dsp.focus({ direction = "down" }))
+
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("hyprshutdown"))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.exit())
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("$HOME/.dotfiles/scripts/gen-theme.sh toggle"))
