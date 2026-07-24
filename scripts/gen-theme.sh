@@ -57,8 +57,19 @@ gen_rofi() {
     cat "$dir/theme-base.rasi" "$dir/theme-$mode.rasi" > "$dir/theme.rasi"
 }
 
+gen_wallpaper() {
+    local wallpaper="$HOME/.local/share/wallpapers/wallpaper-$mode.png"
+
+    if command -v awww >/dev/null 2>&1; then
+        awww img "$wallpaper" \
+            --transition-type wipe \
+            --transition-duration 1
+    fi
+}
+
 gen_kitty
 gen_waybar
 gen_rofi
+gen_wallpaper
 
 echo "Theme set to: $mode"
