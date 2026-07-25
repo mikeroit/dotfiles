@@ -55,6 +55,12 @@ PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;33m\]$(__git_pr
 # stock vim happens to be on the system.
 alias vim="nvim"
 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+
 # --- Color support: ls family + grep ---
 # Uses standard ANSI SGR codes only (no hardcoded hex), so these follow
 # whichever kitty theme (soft/contrast) is currently active automatically —
@@ -67,13 +73,24 @@ alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
+# git aliases
+alias gl="git log"
+alias gs="git status"
+alias gap="git add ."
+alias gp="git push"
+gcm() {
+    git commit -m "$*"
+}
+
 # grep family — same reasoning, no custom GREP_COLORS needed unless you
 # want to tune match-highlight color/weight later.
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+# personal or proj-specific aliases to navigate or open
 alias dot='cd ~/.dotfiles'
 alias vb='vim ~/.dotfiles/stow/bash/.bashrc'
 alias snt='cd ~/workspace/SwarmNet'
 alias pck='cd ~/workspace/SwarmNet/packages/simulation/src/'
+alias loginwpdir='/usr/share/sddm/themes/catppuccin/backgrounds/'
