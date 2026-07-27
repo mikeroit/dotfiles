@@ -55,22 +55,23 @@ element-icon {
 entry {
     border:                       0px;
 }
-// stow/rofi/.config/rofi/theme-soft.rasi
-// Catppuccin Mocha — soft/low-contrast palette, matching kitty-theme-soft.conf
-// and style-theme-soft.css. Concatenated onto theme-base.rasi by gen-theme.sh.
+// stow/rofi/.config/rofi/theme-contrast.rasi
+// High-contrast palette for bright/outdoor lighting, matching
+// kitty-theme-contrast.conf and style-theme-contrast.css.
+// Concatenated onto theme-base.rasi by gen-theme.sh.
 
 * {
-    background:                   #1e1e2eff;
-    background-alt:               #313244ff;
-    foreground:                   #cdd6f4ff;
-    selected:                     #cba6f7ff;
-    active:                       #a6e3a1ff;
-    urgent:                       #f38ba8ff;
+    background:                   #000000ff;
+    background-alt:               #202020ff;
+    foreground:                   #ffffffff;
+    selected:                     #ffffffff;
+    active:                       #33ff33ff;
+    urgent:                       #ff3333ff;
 }
 
 window {
     background-color:             @background;
-    border-color:                 @selected;
+    border-color:                 @foreground;
 }
 
 inputbar {
@@ -79,13 +80,13 @@ inputbar {
 }
 
 prompt {
-    text-color:                   @selected;
+    text-color:                   #5599ffff;
     background-color:             @background-alt;
 }
 
 entry {
     text-color:                   @foreground;
-    placeholder-color:            #6c7086ff;
+    placeholder-color:            #808080ff;
     background-color:             @background-alt;
 }
 
@@ -100,16 +101,16 @@ element normal.normal {
 
 element selected.normal {
     background-color:             @selected;
-    text-color:                   #11111bff;
+    text-color:                   #000000ff;
 }
 
 element alternate.normal {
-    background-color:             @background;
-    text-color:                   @foreground;
+    background-color: @background;
+    text-color: @foreground;
 }
 
 element-icon {
-    background-color:             transparent;
+    background-color: transparent; 
 }
 
 element-text {
@@ -133,5 +134,5 @@ element alternate.active {
 
 element selected.active {
     background-color:             @selected;
-    text-color:                   #11111bff;
+    text-color:                   #000000ff;
 }

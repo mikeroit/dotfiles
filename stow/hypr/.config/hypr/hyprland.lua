@@ -1,3 +1,6 @@
+hl.env("AQ_MGPU_NO_EXPLICIT", "1")
+--hl.env("AQ_DRM_DEVICES", "/dev/dri/by-path/pci-0000:00:02.0-card")
+
 local terminal = "kitty"
 local file_manager = "thunar"
 local launcher = "rofi -show drun"
@@ -58,6 +61,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("mako")
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("wl-paste --type image/png --watch cliphist store")
+    hl.exec_cmd("$HOME/.dotfiles/scripts/fix-xdph.sh")
 end)
 
 local mod = "SUPER"
