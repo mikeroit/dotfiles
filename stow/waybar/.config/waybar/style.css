@@ -40,69 +40,71 @@ window#waybar {
 #tray {
     margin-right: 4px;
 }
-/* stow/waybar/.config/waybar/style-theme-contrast.css
-   High-contrast palette for bright/outdoor lighting, matching
-   kitty-theme-contrast.conf. Concatenated after style-base.css. */
+/* stow/waybar/.config/waybar/style-theme-soft.css
+   Catppuccin Mocha — soft/low-contrast palette, matching kitty-theme-soft.conf.
+   Concatenated after style-base.css by gen-theme.sh. */
 
 window#waybar {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
 }
 
 #workspaces button {
     background-color: transparent;
-    color: #808080;
+    color: #6c7086;
 }
 
 #workspaces button.active {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #cba6f7;
+    color: #11111b;
 }
 
 #workspaces button.urgent {
-    background-color: #ff3333;
-    color: #000000;
+    background-color: #f38ba8;
+    color: #11111b;
 }
 
 #window {
-    color: #ffffff;
+    color: #bac2de;
 }
 
 #clock {
-    color: #5599ff;
+    color: #89b4fa;
     font-weight: bold;
 }
 
 #custom-theme {
-    color: #ffffff;
+    color: #b4befe;
 }
 
 #network {
-    color: #33ffff;
+    color: #94e2d5;
 }
 
 #network.disconnected {
-    color: #ff3333;
+    color: #f38ba8;
 }
 
 #pulseaudio {
-    color: #ffff33;
+    color: #f9e2af;
 }
 
 #pulseaudio.muted {
-    color: #808080;
+    color: #6c7086;
 }
 
 #battery {
-    color: #33ff33;
+    color: #a6e3a1;
 }
 
 #battery.warning {
-    color: #ffff33;
+    color: #f9e2af;
 }
 
 #battery.critical {
-    color: #ff3333;
+    color: #f38ba8;
+    /* Blink on critical battery — a color match alone is easy to miss
+       out of the corner of your eye; motion isn't. */
     animation: blink 1.5s steps(2) infinite;
 }
 
@@ -113,5 +115,5 @@ window#waybar {
 }
 
 #tray {
-    color: #ffffff;
+    color: #cdd6f4;
 }

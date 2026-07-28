@@ -1,4 +1,5 @@
 hl.env("AQ_MGPU_NO_EXPLICIT", "1")
+--hl.env("AQ_DRM_DEVICES", "/dev/dri/by-path/pci-0000:00:02.0-card:/dev/dri/by-path/pci-0000:01:00.0-card")
 --hl.env("AQ_DRM_DEVICES", "/dev/dri/by-path/pci-0000:00:02.0-card")
 
 local terminal = "kitty"

@@ -94,3 +94,10 @@ alias vb='vim ~/.dotfiles/stow/bash/.bashrc'
 alias snt='cd ~/workspace/SwarmNet'
 alias pck='cd ~/workspace/SwarmNet/packages/simulation/src/'
 alias loginwpdir='/usr/share/sddm/themes/catppuccin/backgrounds/'
+
+# alias to show power use in watts
+alias watts='upower -i $(upower -e | grep BAT) | grep energy-rate'
+
+#SwarmNet aliases
+alias simrun='cargo run -p simulation-runtime'
+alias ctest='cargo test'
