@@ -214,3 +214,8 @@ hl.bind(
         "mkdir -p \"$HOME/Pictures/Screenshots\" && grim -g \"$(slurp)\" \"$HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png\""
     )
 )
+
+-- keybindings for Cherry keyboard
+hl.bind("XF86HomePage", hl.dsp.exec_cmd("google-chrome-stable --new-window")) --Chrome
+hl.bind("XF86Calculator", hl.dsp.exec_cmd(terminal)) --Terminal
+
